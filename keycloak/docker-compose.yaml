@@ -6,7 +6,7 @@ services:
       image: postgres:13
       restart: always
       volumes:
-        - /mnt/containers/keycloak/container-data/db:/var/lib/postgresql/data:Z
+        - /portainer/Files/AppData/keycloak/container-data/db:/var/lib/postgresql/data:Z
       environment:
         POSTGRES_DB: keycloak
         POSTGRES_USER: keycloak
