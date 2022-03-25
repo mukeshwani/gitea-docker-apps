@@ -36,6 +36,7 @@ services:
         - keycloak-nw
         
 networks:
-    keycloak-nw:
     reverseproxy-nw:
         external: true
+    keycloak-nw:
+
