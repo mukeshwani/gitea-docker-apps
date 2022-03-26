@@ -27,8 +27,8 @@ services:
         KEYCLOAK_USER: admin
         KEYCLOAK_PASSWORD: ${KEYCLOAK_PASSWORD}
         PROXY_ADDRESS_FORWARDING: 'true'
-      # ports:
-        # - 8080:8080
+       ports:
+         - 8080:8080
       depends_on:
         - keycloak-db
       networks:
