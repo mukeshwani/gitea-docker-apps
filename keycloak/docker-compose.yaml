@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 
 services:
   keycloak-db:
@@ -27,8 +27,8 @@ services:
         KEYCLOAK_USER: admin
         KEYCLOAK_PASSWORD: ${KEYCLOAK_PASSWORD}
         PROXY_ADDRESS_FORWARDING: 'true'
-       ports:
-         - 8081:8081
+       #ports:
+       #  - 8081:8081
       depends_on:
         - keycloak-db
       networks:
