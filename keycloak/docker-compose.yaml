@@ -32,10 +32,7 @@ services:
       depends_on:
         - keycloak-db
       networks:
-        - reverseproxy-nw
         - keycloak-nw
         
 networks:
   keycloak-nw:
-  reverseproxy-nw:
-    external: true
