@@ -32,8 +32,8 @@ services:
       depends_on:
         - keycloak-db
       networks:
+        - bridge
         - keycloak-nw
         
 networks:
     keycloak-nw:
-
