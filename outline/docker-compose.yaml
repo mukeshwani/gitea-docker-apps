@@ -6,7 +6,6 @@ services:
     container_name: outline_redis
     networks:
       - outline-internal
-
   outline_postgres:
     image: postgres:latest
     restart: always
@@ -19,7 +18,6 @@ services:
       - outline-internal
     volumes:
       - /portainer/Files/AppData/outline/container-data/db:/var/lib/postgresql/data:Z
-
   outline_minio:
     image: minio/minio
     restart: always
@@ -36,7 +34,6 @@ services:
     networks:
       - reverseproxy-nw
     command: "server /data --console-address :9001"
-
   outline:
     image: outlinewiki/outline
     user: root
@@ -76,7 +73,6 @@ services:
     networks:
       - outline-internal
       - reverseproxy-nw
-
 networks:
   outline-internal:
   reverseproxy-nw:
