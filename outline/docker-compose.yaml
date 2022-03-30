@@ -4,8 +4,6 @@ services:
     image: redis
     restart: always
     container_name: outline_redis
-    networks:
-      - outline-internal
   outline_postgres:
     image: postgres:latest
     restart: always
