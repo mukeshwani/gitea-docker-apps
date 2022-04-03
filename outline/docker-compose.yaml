@@ -25,7 +25,7 @@ services:
       - MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}
       - MINIO_BROWSER_REDIRECT_URL=${MINIO_BROWSER_REDIRECT_URL}
     ports:
-       - 9080:9080
+       - 9080:9000
        - 9001:9001
     command: "server /data --console-address :9001"
   outline:
