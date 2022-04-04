@@ -1,7 +1,7 @@
 version: "2"
 services:
   outline_redis:
-    image: redis
+    image: redis:latest
     restart: always
     container_name: outline_redis
   outline_postgres:
@@ -15,7 +15,7 @@ services:
     volumes:
       - /portainer/Files/AppData/outline/container-data/db:/var/lib/postgresql/data:Z
   outline_minio:
-    image: minio/minio
+    image: minio/minio:latest
     restart: always
     container_name: outline_minio
     volumes:
@@ -25,11 +25,11 @@ services:
       - MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}
       - MINIO_BROWSER_REDIRECT_URL=${MINIO_BROWSER_REDIRECT_URL}
     ports:
-       - 9080:9000
+       - 9088:9000
        - 9001:9001
     command: "server /data --console-address :9001"
   outline:
-    image: outlinewiki/outline
+    image: outlinewiki/outline:latest
     user: root
     restart: always
     container_name: outline
