@@ -3,11 +3,11 @@ services:
   nocodb:
     image: nocodb/nocodb:latest
     container_name: nocodb
+    volumes:
+      - /portainer/Files/AppData/nocodb/container-data/data:/usr/app/data
     restart: always
     ports:
       - "8631:8080"
-      - "8632:8081"
-      - "8633:8082"
-      - "8634:8084"
     environment:
-      - NC_DB:"mysql2://192.168.1.181:3306?u=nocodb_user&p=P@s$w0rd123!&d=nocodb-db"
+      NC_DB:${NC_DB_STRING}
+      NC_AUTH_JWT_SECRET:${NC_AUTH_JWT_SECRET}
