@@ -9,5 +9,5 @@ services:
     ports:
       - "8631:8080"
     environment:
-      NC_DB:${NC_DB_STRING}
-      NC_AUTH_JWT_SECRET:${NC_AUTH_JWT_SECRET}
+      NC_DB: ${NC_DB_STRING}
+      NC_AUTH_JWT_SECRET: ${NC_AUTH_JWT_SECRET}
