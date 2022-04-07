@@ -18,6 +18,8 @@ services:
     volumes:
     - /portainer/Files/AppData/Config/Guacamole/drive:/drive:rw
     - /portainer/Files/AppData/Config/Guacamole/record:/record:rw
+    ports:
+    - 4822:4822
   # postgres
   postgres:
     container_name: postgres_guacamole_compose
