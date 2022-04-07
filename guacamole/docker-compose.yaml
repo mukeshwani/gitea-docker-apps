@@ -48,6 +48,7 @@ services:
       POSTGRES_HOSTNAME: postgres
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_USER: guacamole_user
+      GUACD_PORT: 4822
     image: guacamole/guacamole
     links:
     - guacd
