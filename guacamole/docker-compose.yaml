@@ -20,36 +20,17 @@ services:
     - /portainer/Files/AppData/Config/Guacamole/record:/record:rw
     ports:
     - 4822:4822
-  # postgres
-  postgres:
-    container_name: postgres_guacamole_compose
-    environment:
-      PGDATA: /var/lib/postgresql/data/guacamole
-      POSTGRES_DB: guacamole_db
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_USER: guacamole_user
-    image: postgres:latest
-#    networks:
-#      guacnetwork_compose:
-    ports:
-    - 5432:5432
-    restart: always
-    volumes:
-    - /portainer/Files/AppData/Config/Guacamole/db/init:/docker-entrypoint-initdb.d:ro
-    - /portainer/Files/AppData/Config/Guacamole/db/data:/var/lib/postgresql/data:rw
-
   # guacamole
   guacamole:
     container_name: guacamole_compose
     depends_on:
     - guacd
-    - postgres
     environment:
       GUACD_HOSTNAME: 192.168.1.78
-      POSTGRES_DATABASE: guacamole_db
-      POSTGRES_HOSTNAME: 192.168.1.78
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_USER: guacamole_user
+      MYSQL_DATABASE: guacamole_db
+      MYSQL_HOSTNAME: 192.168.1.78
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_USER: guacamole_user
       GUACD_PORT: 4822
     image: guacamole/guacamole:latest
     links:
