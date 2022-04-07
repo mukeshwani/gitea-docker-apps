@@ -31,6 +31,8 @@ services:
     image: postgres:latest
 #    networks:
 #      guacnetwork_compose:
+    ports:
+    - 5432:5432
     restart: always
     volumes:
     - /portainer/Files/AppData/Config/Guacamole/db/init:/docker-entrypoint-initdb.d:ro
