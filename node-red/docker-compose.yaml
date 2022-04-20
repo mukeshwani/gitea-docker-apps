@@ -18,7 +18,7 @@ services:
     networks:
       - node-red-net
     volumes:
-      - /portainer/Files/AppData/node-red/data:/data:Z
+      - /portainer/Files/AppData/nodered/data:/data:Z
 
 networks:
   node-red-net:
