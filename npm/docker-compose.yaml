@@ -54,3 +54,7 @@ services:
     secrets:
       - DB_ROOT_PWD
       - MYSQL_PWD
+networks:
+  default:
+    external:
+      name: nginx-network
