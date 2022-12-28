@@ -39,6 +39,7 @@ services:
       - MYSQL_PWD
     depends_on:
       - db
+    DISABLE_IPV6: 'true'
   db:
     image: jc21/mariadb-aria
     restart: unless-stopped
@@ -58,3 +59,7 @@ networks:
   default:
       external: true
       name: nginx-network
+healthcheck:
+  test: ["CMD", "/bin/check-health"]
+  interval: 10s
+  timeout: 3s
