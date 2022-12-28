@@ -31,7 +31,7 @@ services:
       # and remove all DB_MYSQL_* lines above
       # DB_SQLITE_FILE: "/data/database.sqlite"
       # Uncomment this if IPv6 is not enabled on your host
-      # DISABLE_IPV6: 'true'
+      DISABLE_IPV6: 'true'
     volumes:
       - /portainer/AppData/npm/data:/data
       - ./letsencrypt:/etc/letsencrypt
@@ -39,7 +39,6 @@ services:
       - MYSQL_PWD
     depends_on:
       - db
-    DISABLE_IPV6: 'true'
   db:
     image: jc21/mariadb-aria
     restart: unless-stopped
