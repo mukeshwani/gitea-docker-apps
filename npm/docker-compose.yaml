@@ -56,5 +56,5 @@ services:
       - MYSQL_PWD
 networks:
   default:
-    external:
+      external: true
       name: nginx-network
