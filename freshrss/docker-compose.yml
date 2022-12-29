@@ -29,7 +29,7 @@ services:
                 --db-base ${DB_BASE}
                 --db-host ${DB_HOST}
                 --db-password ${DB_PASSWORD}
-                --db-type pgsql
+                --db-type mysql
                 --db-user ${DB_USER}
                 --default_user admin
                 --language en
@@ -43,10 +43,8 @@ services:
         image: mysql:5.7.20
         container_name: freshrss-db
         environment:
-          - MYSQL_ROOT_PASSWORD=password
-          - MYSQL_DATABASE=db
-          - MYSQL_USER=dbuser
-          - MYSQL_PASSWORD=dbpassword
+          - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+          - MYSQL_DATABASE=${DB_BASE}
         volumes:
             - /portainer/AppData/freshrss/db:/var/lib/mysql
 networks:
