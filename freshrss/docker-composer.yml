@@ -1,0 +1,59 @@
+version: '3'
+
+services:
+    freshrss:
+        image: freshrss/freshrss:edge
+        container_name: freshrss
+        restart: unless-stopped
+        logging:
+        options:
+            max-size: 10m
+        volumes:
+        # Recommended volume for FreshRSS persistent data such as configuration and SQLite databases
+        - /portainer/AppData/freshrss/data:/var/www/FreshRSS/data
+        # Optional volume for storing third-party extensions
+        - /portainer/AppData/freshrss/extensions:/var/www/FreshRSS/extensions
+        ports:
+        # If you want to open a port 8080 on the local machine:
+        - "8780:80"
+        environment:
+        # A timezone America/Chicago (default is UTC)
+        TZ: America/Chicago
+        # Cron job to refresh feeds at specified minutes
+        CRON_MIN: '2,32'
+        # 'development' for additional logs; default is 'production'
+        FRESHRSS_ENV: production
+        # Optional auto-install parameters (the Web interface install is recommended instead):
+        # ⚠️ Parameters below are only used at the very first run (so far).
+        # So if changes are made (or in .env file), first delete the service and volumes.
+        # ℹ️ All the --db-* parameters can be omitted if using built-in SQLite database.
+        FRESHRSS_INSTALL: |-
+            --api_enabled
+            --base_url ${BASE_URL}
+            --db-base ${DB_BASE}
+            --db-host ${DB_HOST}
+            --db-password ${DB_PASSWORD}
+            --db-type pgsql
+            --db-user ${DB_USER}
+            --default_user admin
+            --language en
+        FRESHRSS_USER: |-
+            --api_password ${ADMIN_API_PASSWORD}
+            --email ${ADMIN_EMAIL}
+            --language en
+            --password ${ADMIN_PASSWORD}
+            --user admin
+    freshrss-db:
+        image: mysql:5.7.20
+        container_name: freshrss-db
+        environment:
+          - MYSQL_ROOT_PASSWORD=password
+          - MYSQL_DATABASE=db
+          - MYSQL_USER=dbuser
+          - MYSQL_PASSWORD=dbpassword
+        volumes:
+            - /portainer/AppData/freshrss/db:/var/lib/mysql
+networks:
+  default:
+    external: true
+      name: mukeshio-network
