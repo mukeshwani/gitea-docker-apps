@@ -1,6 +1,6 @@
 version: '3'
 services:
-  wallabag:
+  pages:
     image: wallabag/wallabag
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
@@ -46,3 +46,7 @@ services:
       test: ["CMD", "redis-cli", "ping"]
       interval: 20s
       timeout: 3s
+networks:
+  default:
+      external: true
+      name: nginx-network
