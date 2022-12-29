@@ -23,10 +23,6 @@ services:
         CRON_MIN: '2,32'
         # 'development' for additional logs; default is 'production'
         FRESHRSS_ENV: production
-        # Optional auto-install parameters (the Web interface install is recommended instead):
-        # ⚠️ Parameters below are only used at the very first run (so far).
-        # So if changes are made (or in .env file), first delete the service and volumes.
-        # ℹ️ All the --db-* parameters can be omitted if using built-in SQLite database.
         FRESHRSS_INSTALL: |-
             --api_enabled
             --base_url ${BASE_URL}
@@ -55,5 +51,5 @@ services:
             - /portainer/AppData/freshrss/db:/var/lib/mysql
 networks:
   default:
-    external: true
+      external: true
       name: mukeshio-network
