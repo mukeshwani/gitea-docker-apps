@@ -48,7 +48,7 @@ services:
                 --password ${ADMIN_PASSWORD}
                 --user mukesh
         depends_on:
-            - db
+            - freshrss-db
     freshrss-db:
         image: mariadb:latest
         container_name: freshrss-db
