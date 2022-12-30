@@ -36,7 +36,7 @@ services:
                 --base_url ${BASE_URL}
                 --db-base ${DB_BASE}
                 --db-host ${DB_HOST}
-                --db-password /run/secrets/MYSQL_PWD
+                --db-password ${DB_PASSWORD}
                 --db-type mysql
                 --db-user ${DB_USER}
                 --default_user mukesh
