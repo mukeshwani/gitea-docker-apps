@@ -47,9 +47,10 @@ services:
                 --language en
                 --password ${ADMIN_PASSWORD}
                 --user mukesh
-    freshrss-db:
-        image: mysql:5.7.20
+    db:
+        image: jc21/mariadb-aria
         container_name: freshrss-db
+        restart: unless-stopped
         environment:
             MYSQL_ROOT_PASSWORD__FILE: /run/secrets/DB_ROOT_PWD
             MYSQL_DATABASE: ${DB_BASE}
@@ -58,6 +59,9 @@ services:
             MYSQL_PASSWORD__FILE: /run/secrets/MYSQL_PWD
         volumes:
             - /portainer/AppData/freshrss/db:/var/lib/mysql
+        secrets:
+            - DB_ROOT_PWD
+            - MYSQL_PWD
 networks:
   default:
       external: true
