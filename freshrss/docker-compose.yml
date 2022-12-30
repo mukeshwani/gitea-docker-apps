@@ -65,7 +65,3 @@ services:
         secrets:
             - DB_ROOT_PWD
             - MYSQL_PWD
-networks:
-  default:
-      external: true
-      name: mukeshio-network
