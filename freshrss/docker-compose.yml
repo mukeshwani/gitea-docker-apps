@@ -18,12 +18,12 @@ services:
                 max-size: 10m
         volumes:
         # Recommended volume for FreshRSS persistent data such as configuration and SQLite databases
-        - /portainer/AppData/freshrss/data:/var/www/FreshRSS/data
+            - /portainer/AppData/freshrss/data:/var/www/FreshRSS/data
         # Optional volume for storing third-party extensions
-        - /portainer/AppData/freshrss/extensions:/var/www/FreshRSS/extensions
+            - /portainer/AppData/freshrss/extensions:/var/www/FreshRSS/extensions
         ports:
         # If you want to open a port 8080 on the local machine:
-        - "8780:80"
+            - "8780:80"
         environment:
         # A timezone America/Chicago (default is UTC)
             TZ: America/Chicago
@@ -65,3 +65,7 @@ services:
         secrets:
             - DB_ROOT_PWD
             - MYSQL_PWD
+networks:
+  default:
+      external: true
+      name: mukeshio-network
