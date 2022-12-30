@@ -54,7 +54,7 @@ services:
         container_name: freshrss-db
         restart: unless-stopped
         environment:
-            MARIADB_ROOT_PASSWORD__FILE: /run/secrets/DB_ROOT_PWD
+            MARIADB_ROOT_PASSWORD: ${DB_PASSWORD} 
             MARIADB_DATABASE: ${DB_BASE}
             MARIADB_USER: ${DB_USER}
             MARIADB_PASSWORD: ${DB_PASSWORD}
