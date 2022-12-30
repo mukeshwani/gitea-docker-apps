@@ -49,7 +49,7 @@ services:
                 --user mukesh
         depends_on:
             - db
-    freshrss_db:
+    freshrss-db:
         image: mariadb:latest
         container_name: freshrss-db
         restart: unless-stopped
