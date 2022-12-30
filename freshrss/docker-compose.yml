@@ -31,6 +31,16 @@ services:
             CRON_MIN: '2,32'
         # 'development' for additional logs; default is 'production'
             FRESHRSS_ENV: production
+            FRESHRSS_INSTALL: |-		
+                --api_enabled		
+                --base_url ${BASE_URL}		
+                --db-base ${DB_BASE}		
+                --db-host ${DB_HOST}		
+                --db-password ${DB_PASSWORD}		
+                --db-type mysql		
+                --db-user ${DB_USER}		
+                --default_user mukesh		
+                --language en
             FRESHRSS_USER: |-
                 --api_password ${ADMIN_API_PASSWORD}
                 --email ${ADMIN_EMAIL}
