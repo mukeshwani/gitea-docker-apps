@@ -39,7 +39,7 @@ services:
                 --db-password /run/secrets/MYSQL_PWD
                 --db-type mysql
                 --db-user ${DB_USER}
-                --default_user admin
+                --default_user mukesh
                 --language en
             FRESHRSS_USER: |-
                 --api_password ${ADMIN_API_PASSWORD}
@@ -55,7 +55,6 @@ services:
             MYSQL_ROOT_PASSWORD__FILE: /run/secrets/DB_ROOT_PWD
             MYSQL_DATABASE: ${DB_BASE}
             MYSQL_USER: ${DB_USER}
-            # MYSQL_PASSWORD: "npm"  # use secret instead
             MYSQL_PASSWORD__FILE: /run/secrets/MYSQL_PWD
         volumes:
             - /portainer/AppData/freshrss/db:/var/lib/mysql
