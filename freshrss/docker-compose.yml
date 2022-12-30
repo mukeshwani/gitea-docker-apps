@@ -1,5 +1,13 @@
 version: '3'
 
+secrets:
+  # Secrets are single-line text files where the sole content is the secret
+  # Paths in this example assume that secrets are kept in local folder called ".secrets"
+  DB_ROOT_PWD:
+    file: /root/.secrets/db_root_pwd.txt
+  MYSQL_PWD:
+    file: /root/.secrets/mysql_pwd.txt
+
 services:
     freshrss:
         image: freshrss/freshrss:edge
@@ -43,10 +51,11 @@ services:
         image: mysql:5.7.20
         container_name: freshrss-db
         environment:
-          - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
-          - MYSQL_DATABASE=${DB_BASE}
-          - MYSQL_USER=${DB_USER}
-          - MYSQL_PASSWORD=${DB_PASSWORD}
+            MYSQL_ROOT_PASSWORD__FILE: /run/secrets/DB_ROOT_PWD
+            MYSQL_DATABASE: ${DB_BASE}
+            MYSQL_USER: ${DB_USER}
+            # MYSQL_PASSWORD: "npm"  # use secret instead
+            MYSQL_PASSWORD__FILE: /run/secrets/MYSQL_PWD
         volumes:
             - /portainer/AppData/freshrss/db:/var/lib/mysql
 networks:
