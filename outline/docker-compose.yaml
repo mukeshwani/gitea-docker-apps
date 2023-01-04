@@ -13,13 +13,13 @@ services:
       - POSTGRES_USER=outline
       - POSTGRES_DB=outline
     volumes:
-      - /portainer/Files/AppData/outline/container-data/db:/var/lib/postgresql/data:Z
+      - /portainer/AppData/outline/container-data/db:/var/lib/postgresql/data:Z
   outline_minio:
     image: minio/minio:latest
     restart: always
     container_name: outline_minio
     volumes:
-      - /portainer/Files/AppData/outline/container-data/data:/data:Z
+      - /portainer/AppData/outline/container-data/data:/data:Z
     environment:
       - MINIO_ROOT_USER=minio
       - MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}
@@ -54,13 +54,8 @@ services:
       - AWS_S3_UPLOAD_MAX_SIZE=26214400
       - AWS_S3_FORCE_PATH_STYLE=true
       - AWS_S3_ACL=private
-      - OIDC_CLIENT_ID=outline
-      - OIDC_CLIENT_SECRET=${AUTH_CLIENT_SECRET}
-      - OIDC_AUTH_URI=${AUTH_URL}/auth/realms/master/protocol/openid-connect/auth
-      - OIDC_TOKEN_URI=${AUTH_URL}/auth/realms/master/protocol/openid-connect/token
-      - OIDC_USERINFO_URI=${AUTH_URL}/auth/realms/master/protocol/openid-connect/userinfo
-      - OIDC_USERNAME_CLAIM=email
-      - OIDC_DISPLAY_NAME=Keycloak
-      - OIDC_SCOPES=email
+      - AZURE_CLIENT_ID=${AZURE_CLIENT_ID}
+      - AZURE_CLIENT_SECRET=${AZURE_CLIENT_SECRET}
+      - AZURE_RESOURCE_APP_ID=${AZURE_RESOURCE_APP_ID}
     ports:
       - 8443:443
