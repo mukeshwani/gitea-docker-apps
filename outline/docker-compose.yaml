@@ -29,7 +29,7 @@ services:
        - 9001:9001
     command: "server /data --console-address :9001"
   outline:
-    image: outlinewiki/outline:latest
+    image: outlinewiki/outline:0.66.3
     user: root
     restart: always
     container_name: outline
