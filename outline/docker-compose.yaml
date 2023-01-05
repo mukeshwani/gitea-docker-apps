@@ -59,3 +59,7 @@ services:
       - AZURE_RESOURCE_APP_ID=${AZURE_RESOURCE_APP_ID}
     ports:
       - 8443:443
+networks:
+  default:
+      external: true
+      name: mukeshio-network
