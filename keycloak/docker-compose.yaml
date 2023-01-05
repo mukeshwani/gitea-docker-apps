@@ -5,7 +5,7 @@ services:
     image: postgres
     restart: always
     volumes:
-      - /portainer/Files/AppData/keycloak/container-data/db:/var/lib/postgresql/data
+      - /portainer/AppData/keycloak/container-data/db:/var/lib/postgresql/data
     environment:
       POSTGRES_DB: keycloak
       POSTGRES_USER: keycloak_user
@@ -25,8 +25,12 @@ services:
       KEYCLOAK_PASSWORD: ${KEYCLOAK_PASSWORD}
       PROXY_ADDRESS_FORWARDING: "true"
       REDIRECT_SOCKET: "proxy-https"
-      KEYCLOAK_FRONTEND_URL: https://auth.mbwnetworks.com/auth
+      KEYCLOAK_FRONTEND_URL: https://auth.mukesh.io/auth
     ports:
       - 8080:8080
     depends_on:
       - postgres
+networks:
+  default:
+      external: true
+      name: mukeshio-network
